@@ -20,7 +20,7 @@ function handleSubmit(event){
     getImagesByQuery(query)
     .then(images => { 
         if(images) {
-            getImagesByQuery(images);
+            createGallery(images);
         }
     })
     .catch(error => {     
