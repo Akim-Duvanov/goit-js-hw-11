@@ -12,10 +12,10 @@ const lightbox = new SimpleLightbox('.gallery a', {
 function createGallery(images) {
     gallery.innerHTML = images.map(elem => `
         <li class="gallery-item">
-            <a class="gallery-link" href=${elem.webformatURL}>
+            <a class="gallery-link" href=${elem.largeImageURL}>
                 <img
                     class="gallery-image"
-                    src="${elem.largeImageURL}"
+                    src="${elem.webformatURL}"
                     alt="${elem.tags}"
                 />
                 <ul class="card-info">
@@ -31,8 +31,8 @@ function createGallery(images) {
 }
     
 function clearGallery() {
-    lightbox.refresh();
     gallery.innerHTML = '';
+    lightbox.refresh();
 }
 
 function showLoader() {

@@ -12,6 +12,10 @@ form.addEventListener("submit", handleSubmit);
 function handleSubmit(event){
     event.preventDefault();
     if(queryCatcher.value.trim() === "") {
+        iziToast.warning({
+            title: 'Warning',
+            message: 'empty query',
+        });
         return;
     } 
     const query = queryCatcher.value.trim();
@@ -19,7 +23,12 @@ function handleSubmit(event){
     showLoader();
     getImagesByQuery(query)
     .then(images => { 
-        if(images) {
+        if(images.length === 0) {
+            iziToast.error({
+                title: 'error',
+                message: 'Sorry, there are no images matching your search query. Please try again!',
+            });
+        } else {
             createGallery(images);
         }
     })
